@@ -1,0 +1,102 @@
+﻿@model IEnumerable<HouseWare.Models.Entities.CartItem>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/HouseWare_Layouts.cshtml";
+}
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="/HouseWare/Index">Trang chủ</a></li>
+                    <li class="active">Giỏ hàng</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container_table">
+    @using (Html.BeginForm("CartUpdate","Cart",FormMethod.Post))
+    {
+        <table class="table table-hover table-condensed">
+            <thead>
+                <tr class="tr tr_first">
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Giá</th>
+                    <th style="width:100px;">Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th style="width:50px; text-align:center;"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <form action="./gio-hang/" method="post"></form>
+                @{ decimal tongtien = 0;}
+                @foreach (var cart in Model)
+                {
+                    <tr class="tr">
+                        <td data-th="Hình ảnh">
+                            <div class="col_table_image col_table_hidden-xs"><img src="~/Content/img/@cart.C_Img" alt="@cart.C_Name" class="img-responsive"></div>
+                        </td>
+                        <td data-th="Sản phẩm">
+                            <div class="col_table_name">
+                                <h4 class="nomargin">@cart.C_Name</h4>
+                            </div>
+                        </td>
+                        <td data-th="Mã sản phẩm">
+                            <div class="col_table_name">
+                                <h4 class="nomargin">@cart.C_ProductID</h4>
+                            </div>
+                        </td>
+                        <td data-th="Giá"><span class="color_red font_money">@string.Format("{0:0,0}", cart.C_Price)</span></td>
+
+                        <td data-th="Số lượng">
+                            <div class="clear margintop5">
+                                <div class="floatleft"><input type="number" class="inputsoluong" name="qty" min="1" value="@cart.C_Qty"></div>
+                                <input type="hidden" name="check" value="999">
+                                <div class="floatleft width50">
+                                    <button class="btn_df btn_table_td_rf_del btn-sm" name="CAPNHAT" value="Cập nhật" type="submit">
+                                      <img src="~/Content/img/ico-xoayvong.jpg" style="width:15px" />  @*Cập nhật đơn hàng*@
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </td>
+
+                        <td data-th="Thành tiền" class="text_center"><span class="color_red font_money">@string.Format("{0:0,0}", cart.C_Amount)</span></td>
+                        <td class="actions aligncenter" data-th="">
+                            <a href="@Url.Action("CartDelete","Cart",new {productid = cart.C_ProductID })" class="btn_df btn_table_td_rf_del btn-sm"><img src="~/Content/img/ico-bin.png" style="width:16px"> <span class="display_mobile">Xóa sản phẩm</span></a>
+                        </td>
+                    </tr>
+                    tongtien += cart.C_Amount;
+                }
+
+                <tr>
+                    <td>
+                        <a href="/Cart/Thanhtoan" class="btn btn-sm btn-success" style="margin-left:170% ;font-size:20px; "> Thanh Toán</a>
+                    </td>
+                    <td colspan="7" class="textright_text">
+                        <div class="sum_price_all">
+                            <span class="text_price">Tổng tiền thành toán</span>:
+                            <span class="text_price color_red">@string.Format("{0:0,0}", tongtien) VND</span>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr class="tr_last">
+                    <td colspan="7">
+                        <a href="/HouseWare/Index" class="btn_df btn_table floatleft"> Tiếp tục mua hàng</a>
+                        <div class="clear"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+
+</div>
+
+

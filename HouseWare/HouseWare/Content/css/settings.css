@@ -1,0 +1,35 @@
+body.index .big-collection.style-1 .title {
+	background: #323232;
+}
+body.index .big-collection.style-1 .navtabs li a.active, 
+body.index .big-collection.style-1 .navtabs li a:hover {
+	color: #323232;
+}
+body.index .big-collection.style-1 .navtabs li a.active:before, 
+body.index .big-collection.style-1 .navtabs li a:hover:before {
+	background: #323232;
+}
+
+body.index .big-collection.style-2 .title {
+	background: #323232;
+}
+body.index .big-collection.style-2 .navtabs li a.active, 
+body.index .big-collection.style-2 .navtabs li a:hover {
+	color: #323232;
+}
+body.index .big-collection.style-2 .navtabs li a.active:before, 
+body.index .big-collection.style-2 .navtabs li a:hover:before {
+	background: #323232;
+}
+
+body.index .big-collection.style-3 .title {
+	background: #323232;
+}
+body.index .big-collection.style-3 .navtabs li a.active, 
+body.index .big-collection.style-3 .navtabs li a:hover {
+	color: #323232;
+}
+body.index .big-collection.style-3 .navtabs li a.active:before, 
+body.index .big-collection.style-3 .navtabs li a:hover:before {
+	background: #323232;
+}

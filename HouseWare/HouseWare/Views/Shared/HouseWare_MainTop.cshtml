@@ -1,0 +1,139 @@
+﻿@model IEnumerable<HouseWare.Models.Entities.Product>
+<div class="top-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="main-slideshow">
+
+                    <div class="item">
+                        <a href=".html"><img src="~/Content/img/sl03.png" class="img-responsive"></a>
+                    </div>
+
+                    <div class="item">
+                        <a href="#2"><img src="~/Content/img/sl01.png" class="img-responsive"></a>
+                    </div>
+
+                    <div class="item">
+                        <a href="#1"><img src="~/Content/img/sl02.png" class="img-responsive"></a>
+                    </div>
+
+                    <div class="item">
+                        <a href=".html"><img src="~/Content/img/sl04.png" class="img-responsive"></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="wrap-service">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 col-xs-12">
+                <div class="item clearfix">
+                    <img src="~/Content/img/ico-service3.png">
+                    <div class="info-service">
+                        <h3>HỖ TRỢ 24/7</h3>
+                        <p>LUÔN HỖ TRỢ MỌI LÚC</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div class="item clearfix">
+                    <img src="~/Content/img/ico-service2.png">
+                    <div class="info-service">
+                        <h3>MIỄN PHÍ GIAO HÀNG</h3>
+                        <p>KHI ĐƠN HÀNG TRÊN 1.000.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div class="item clearfix">
+                    <img src="~/Content/img/ico-service1.png">
+                    <div class="info-service">
+                        <h3>Hoàn lại tiền 100%</h3>
+                        <p>SAU 7 NGÀY NẾU SẢN PHẨM HỎNG</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="special-collection">
+    <div class="container">
+        <div class="default-title">
+            <h2>Đồ dùng nhà bếp</h2>
+        </div>
+        <div class="row">
+            <div class="owl-special-collection">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <div class="product-grid product-item">
+                            <div class="image">
+                                <a href="@Url.Action("DetailPro","ProductDetail",new {@Masp =item.ID })">
+                                    <img src="~/Content/img/@item.Img" class="img-responsive" alt="">
+                                </a>
+                                <div class="form">
+                                    <div class="btn-group" data-toggle="tooltip" title="Thêm vào giỏ hàng">
+                                        <a href="@Url.Action("CartAdd","Cart",new {productid = item.ID })">
+                                            <input type="hidden" name="id" value="1505987" />
+                                            <button class="button add-cart" type="button">
+                                                <img src="~/Content/img/ico-cart_mobile.png" /> <span class="hidden-md hidden-lg"> Thêm vào giỏ hàng</span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h3 class="name">
+                                    <a href="san-pham/5-qt-dutch-oven-21.html">@item.Name</a>
+                                </h3>
+                                <p class="vendor">Giá: @item.Gia VND</p>
+                                <p class="price">
+                                    <span class="special">Liên hệ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+             
+            </div>
+        </div>
+    </div>
+</div>
+@*<script type="text/javascript">
+    function giohang(id) {
+        document.getElementById("khungnen").style.display = "block";
+        document.getElementById("loadding").style.display = "block";
+        jQuery.post('gio-hang/index.html', { 'quantity': 1, 'maSanPham': id }, function (data) {
+            document.getElementById("khungnen").style.display = "none";
+            document.getElementById("loadding").style.display = "none";
+            swal({
+                title: "Thành công",
+                text: "Sản phẩm đã được thêm vào giỏ hàng!",
+                type: "success",
+                showCancelButton: true,
+                confirmButtonColor: '#F19F00',
+                confirmButtonText: 'Xem giỏ hàng',
+                cancelButtonText: "Tiếp tục mua",
+                closeOnConfirm: false,
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        window.location = 'gio-hang/index.html';
+                    } else {
+                        closeOnCancel: true;
+                    }
+                });
+        })
+    }
+</script>*@

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<HouseWare.Models.Entities.Product>
+@{
+    ViewBag.Title = "LoadPro";
+    Layout = "~/Views/Shared/HouseWare_Layouts.cshtml";
+}
+
+<div class="content prodcut_all">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-push-3 col-xs-12">
+                <a class="top-banner" href="#2">
+                    <img src="~/Content/img/mid-banner-1-1470215836-.jpg" class="img-responsive">
+                </a>
+
+                <div class="collection-grid">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-md-4 col-sm-6 product">
+                                <div class="product-grid product-item">
+                                    <div class="image">
+                                        <a href="@Url.Action("DetailPro","ProductDetail",new {@Masp =item.ID })">
+                                            <img src="~/Content/img/@item.Img" class="img-responsive" alt="Bundt Quartet Pan">
+                                        </a>
+                                        <div class="form">
+                                            <div class="btn-group" data-toggle="tooltip" title="Thêm vào giỏ hàng">
+                                                <a  href="@Url.Action("CartAdd","Cart",new {productid = item.ID })">
+                                                    <input type="hidden" name="id" value="1505987" />
+                                                    <button class="button add-cart" type="button">
+                                                       <img src="~/Content/img/ico-cart.png" /> <span class="hidden-md hidden-lg"> Thêm vào giỏ hàng</span>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="info">
+                                        <h3 class="name">
+                                            <a href="san-pham/bundt-quartet-pan-28.html">@item.Name</a>
+                                        </h3>
+                                        <p class="vendor">@item.Gia</p>
+                                        <p class="price">
+                                            <span class="special">Liên hệ</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                        </div>
+                </div>
+                <div class="clear"></div>
+                <div class="toolbar-collection last">
+                    <div class="wp_page">
+                        <div class="page">
+                            <a class="active">1</a> <a href="san-pham/index1f4a.html?&amp;page=1">2</a> <a href="san-pham/index1f4a.html?&amp;page=1"><i class="fa fa-angle-right"></i></a> <a href="san-pham/index1f4a.html?&amp;page=1"><i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-md-pull-9 col-xs-12">
+                <aside class="aside-collection">
+                    <h2>Danh mục</h2>
+                    <ul class="linklist">
+
+                        <li><a href="/HouseWare/Index">Đồ dùng nhà bếp</a></li>
+
+                    </ul>
+                </aside>
+                <div class="aside-collection">
+                    <h2>Sản phẩm bán chạy</h2>
+                    <ul class="list-unstyled list-products">
+                        @foreach (var item in Model)
+                        {
+
+                            <li class="clearfix">
+                                <a class="image" href="@Url.Action("DetailPro","ProductDetail",new {@Masp =item.ID })">
+                                    <img src="~/Content/img/@item.Img" title="@item.Name" alt="@item.Name">
+                                </a>
+                                <div class="info">
+                                    <h3 title="@item.Name"><a href=@Url.Action("DetailPro","ProductDetail",new {@Masp =item.ID })>@item.Name</a></h3>
+                                    <i class="product-grid product-item vendor ">Giá: @item.Gia VND</i>
+                                    <p class="price"><span>Liên hệ</span></p>
+                                </div>
+                            </li>
+                        }
+
+
+                        </ul>
+                </div>
+
+
+
+                @*<aside class="aside-collection">
+                    <a href="#1">
+                        <img src="~/Content/img/v-banner.jpg" class="img-responsive" style="width:100%;">
+                    </a>
+                </aside>*@
+            </div>
+        </div>
+    </div>
+</div>
+

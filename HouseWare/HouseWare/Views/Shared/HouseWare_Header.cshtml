@@ -1,0 +1,221 @@
+﻿@model IEnumerable<HouseWare.Models.Entities.Categone>
+
+@{
+    var u = Session["UserCustomer"] as HouseWare.Models.Entities.User;
+}
+
+<header id="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 hidden-md hidden-xs hidden-sm left">
+                    <a href="javascript:;" data-toggle="modal" data-target="#online-support">
+
+                        <i class=""></i>&nbsp; Hỗ trợ trực tuyến
+                    </a>
+                </div>
+                <div class="col-md-12 col-xs-12 col-lg-8 right">
+
+                    <a href="javascript:;" class="toggle-m-menu hidden-md hidden-lg">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <a href="javascript:;" class="toggle-tool-header hidden-md hidden-lg"><i class="fa fa-ellipsis-v"></i></a>
+                    <ul class="list-unstyled list--tool">
+                        <li><a href="/HouseWare/Index">Hướng dẫn mua hàng</a></li>
+                        <li><a href="/HouseWare/Introduce">Giới thiệu</a></li>
+                        <li><a href="/ProductUS/LoadPro">Sản phẩm</a></li>
+
+
+                        @*@{ if (u != null && u.IdRole != 1)
+            {
+                <li>  Xin chào: @u.UserName</li>
+                <li><a href="">Đăng xuất</a></li>
+            }
+            else if (u != null && u.IdRole == 1)
+            {
+                <li>  Xin chào : @u.UserName</li>
+                <li><a href="">Đăng xuất</a></li>
+
+            }
+            else
+            {
+                <li><a href="/User/Dangnhap">Đăng Nhập</a></li>
+            }
+        }*@
+
+
+                        @{ if (Session["UserCustomer"] !="" )
+                            {
+                                <li><a href="~/User/Dangxuat">Đăng xuất</a></li>
+                                <li style="float:right"><a>Xin chào :@Session["UserCustomer"] </a></li>
+
+
+
+                            }
+                            @*else if (Session["UserCustomer"] != null && Session["CustomerIdRole"] == "1")
+                            {
+                                <li>Admin</li>
+                                <li><a href="">Đăng xuất</a></li>
+                            }*@
+                            else
+                            {
+                                <li><a href="/User/Dangnhap">Đăng Nhập</a></li>
+                            }
+                        }
+
+
+                        @*<li><a href="/User/Dangnhap">Đăng xuất</a></li>*@
+                        @*    <li class="hidden-md hidden-lg"><a href="gio-hang.html">Giỏ hàng(<span class="mini-cart-count"><b>0</b></span>)</a></li>*@
+                    </ul>
+
+                   
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-xs-12 logo-wrapper">
+                    <a href=".html">
+                        <img alt="Logo" title="Logo" src="~/Content/img/nw-logo-1474702130-.png" class="img-responsive">
+                    </a>
+                </div>
+
+
+                <div class="col-lg-6 col-md-8 col-xs-12">
+                    <ul class="main-nav hidden-xs hidden-sm">
+                        <li class="active"><a href="/HouseWare/Index">Trang chủ</a></li>
+                        <li class=""><a href="/HouseWare/Introduce">Giới thiệu</a></li>
+                        <li class=" dropdown has-mega">
+                            <a href="/ProductUS/LoadPro">Sản phẩm</a>
+                            <div class="megamenu">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <h3><a href="san-pham/do-dung-nha-bep-c2.html">Đồ dùng nhà bếp</a></h3>
+                                        <ul>
+                                            @foreach (var i in Model)
+                                            {
+                                                <li id="@i.ID"><a href="@Url.Action("LoadProductByCatID","ProductUs",new {CatID = i.ID })">@i.Name</a></li>
+
+                                            }
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <!--<div class="banner"> <a href=""><img src="template/Default/img/megamenu-banner.jpg" class="img-responsive"></a></div>-->
+                            </div>
+                        </li>
+                        <li class=""><a href="/HouseWare/News">Tin tức</a></li>
+
+                        <li class=""><a href="/HouseWare/Contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-2 hidden-xs hidden-sm">
+                    <ul class="tool-top">
+
+                        <form class="form-inline form-search" style="float:left;margin-top:25px">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="~/Content/img/ico-search.png" style="width:18px" /></button>
+                        </form>
+
+
+                        @{ 
+                            int soluong = 0;
+                          
+                                if (!Session["MyCart"].Equals(""))
+                                {
+                                    List<HouseWare.Models.Entities.CartItem> listcart = (List<HouseWare.Models.Entities.CartItem>)Session["MyCart"];
+                                    soluong = listcart.Count();
+                                }
+                            
+                         
+
+                            }
+
+                        <li class="dropdown-cart">
+                            <a href="/Cart/Index"><img src="~/Content/img/ico-cart.png" style="width:18px"></a>
+                            <span class="mini-cart-count">
+                                <b>
+                                   @soluong
+                                </b>
+                            </span>
+                            <!--
+                            <div class="mini-cart-content">
+                              <div class="has-items"> Có <span class="mini-cart-count"><b>0</b></span> sản phẩm trong giỏ hàng
+                                <ul>
+                                </ul>
+                                <div class="mini-tt-price"> <span class="pull-left">Tổng cộng:</span> <span class="pull-right price">0&#8363;</span> </div>
+                                <div class="action-btn clearfix"> <a href="/cart" class="first-button" title="Giỏ hàng">Giỏ hàng</a> <a href="/checkout" class="second-button" title="Thanh toán">Thanh toán</a> </div>
+                              </div>
+                              <div class="no-items"> Không có sản phẩm nào trong giỏ hàng của bạn! </div>
+                            </div>
+                            -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+        <nav class="offset-menu offset-menu-left hidden-md hidden-lg" id="offset-menu-s1">
+        <div class="offset-menu-wrapper">
+            <ul class="list-unstyled mainmenu-mobile">
+                <li><a href=".html">Trang chủ</a></li>
+                <li class="has-sub level1">
+                    <a href="san-pham/index.html">Sản phẩm</a>
+                    <ul class="list-unstyled" style="display:none">
+
+                        <li class="has-sub level2">
+                            <a href="%3dsan-pham/do-dung-nha-bep-c2.html">Đồ dùng nhà bếp</a>
+                            <ul class="list-unstyled" style="display:none">
+
+
+                                <li><a href="san-pham/xoong-noi-c9.html">Xoong - nồi</a></li>
+                                <li><a href="san-pham/chao-c8.html">Chảo</a></li>
+                                <li><a href="san-pham/dung-cu-lam-banh-c7.html">Dụng cụ làm bánh</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li><a href="tin-tuc.html">Tin tức</a></li>
+                <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+                <li><a href="lien-he.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+        -->
+</header>
+@*<script>
+    $("li").click(function (e) {
+          var id = $(this).attr("id");
+        $.ajax({
+             url: "LoadProductByCatID",
+            data: { CatID: id },
+            success: function (response) {
+                $("div.collection-grid").html(response);
+
+                window.location.href = "ProductUS/LoadPro/" + id;
+        }
+     });
+});
+</script>*@
+@*#region JS TÌM KIẾM Ở TRANG  CHỦ*@
+<script>
+    $(document).ready(function () {
+        //Sự kiện tìm kiếm
+        $(".form-search").submit(function () {
+            //Lấy ra giá trị đang nhập trên input
+            let key = $(".form-search input").val();
+            //CHuyển trang
+            window.location.href = "/ProductDetail/Search?key=" + key;
+            return false;   //tránh reaload trang khi submit
+        });
+    });
+</script>

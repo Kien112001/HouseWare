@@ -1,0 +1,43 @@
+/* CSS Document */
+@font-face{
+	font-family: "roboto_l";
+	src:url(../../../Fonts/fonts-Roboto_good/Roboto-Light.html);
+}
+
+@font-face{
+	font-family: "roboto_md";
+	src:url('../../../Fonts/fonts-Roboto_good/Roboto-Medium.html');
+}
+
+@font-face{
+	font-family: "roboto_i";
+	src:url('../../../Fonts/fonts-Roboto_good/Roboto-Italic.html');
+}
+
+@font-face{
+	font-family: "roboto_b";
+	src:url('../../../Fonts/fonts-Roboto_good/Roboto-Bold.html');
+}
+
+
+.cart_success{width:100%; margin:0 auto; font-family:roboto_md;}
+.cart_success_in{padding:10px;}
+.cs_left{width:100%; color:#BCBCBC;}
+.cs_left_in i.fa{ font-size:170px;}
+.cs_left_in{padding:0px 10px; text-align:center;}
+.cs_right{width:100%; text-align:center; padding-top:10px; line-height:1.5em;}
+.cs_title{font-size:25px; font-weight:bold;line-height: 1.5em;}
+.cs_content{line-height: 1.5em;}
+.back_home{margin:10px 0px;}
+.back_home a.cs_home{color:#dc0309; display:inline-block;}
+.cs_home{padding:10px 20px; background:#fff; border:2px solid #dc0309; font-weight:bold; text-decoration:none; color:#fff;}
+@media (max-width:650px)
+{
+		.cs_left{ font-size:140px;}
+		.cs_right{ padding-top:25px;}
+}
+@media (max-width:500px)
+{
+		.cs_left{float:none; width:100%;}
+		.cs_right{float:none; width:100%;  font-size:13px;}
+}

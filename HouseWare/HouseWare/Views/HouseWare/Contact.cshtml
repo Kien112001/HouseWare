@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/HouseWare_Layouts.cshtml";
+}
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="/HouseWare/Index">Trang chủ</a></li>
+                    <li class="active">Liên Hệ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="content">
+    <div class="container">
+
+        <div id="g-map" class="map map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.6485895651351!2d106.61987290064327!3d10.788535839224135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752c06902a3b47%3A0x3ec5f9fa5c6f1033!2sC%C3%B4ng+ty+TNHH+123CORP!5e0!3m2!1svi!2s!4v1459215455128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <script>
+		 jQuery('.map-container').click(function(){
+	jQuery(this).find('iframe').addClass('clicked');
+
+ }).mouseleave(function(){
+			jQuery(this).find('iframe').removeClass('clicked');
+});
+        </script>
+        <div class="row">
+            <div class="col-md-4 about">
+                <h3 class="title">Liên hệ</h3>
+                <div class="info-store">
+
+                    <div class="in-row">
+                       
+                        <span>
+                            <p>
+                                <em><strong>Công ty TNHH 123CORP</strong></em><br />
+                                <em>
+                                    Trụ sở chính :&nbsp;60 Nguyễn Đình Chiểu, P.Đakao, Q.1, TPHCM<br />
+                                    VPĐD:14 Phạm Quý Thích,P.Tân Quý,Q.Tân Phú,TPHCM<br />
+                                    Điện thoại : 08 38 12 17 19 ;&nbsp;<strong>0945 518 538</strong><br />
+                                    <strong>Điện thoại: 0906 308 380</strong>
+                                </em>
+                            </p>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <h3 class="title">Gửi lời nhắn</h3>
+
+                <form name="FormLienHe" id="contact" action="#" onsubmit="return lienHe(this);" method="post">                 
+                    <div class="form-group">
+                        <textarea name="txtNoiDung" class="input-control" placeholder="Lời nhắn..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="first-button">Gửi lời nhắn</button>
+                        <button type="reset" class="first-button">Nhập lại</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

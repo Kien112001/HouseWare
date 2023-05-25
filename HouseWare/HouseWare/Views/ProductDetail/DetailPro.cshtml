@@ -1,0 +1,65 @@
+﻿@using HouseWare.Models.Entities
+@model Product
+@{
+    ViewBag.Title = "DetailPro";
+    Layout = "~/Views/Shared/HouseWare_Layouts.cshtml";
+}
+<div class="content">
+    <div class="container">
+        <div class="product-detail">
+            <div class="top">
+                <div class="row">
+                    <div class="col-md-5 top-image">
+                        <div class="featured-image">
+                            <img src="~/Content/img/@Model.Img" class="img-responsive" id="large-image" data-zoom-image="~/Content/img/@Model.Img">
+                        </div>
+                        <div class="thumbnail-image">
+
+                            <div class="item">
+                                <a href="~/Content/img/@Model.Img" data-image="~/Content/img/@Model.Img" data-zoom-image="~/Content/img/@Model.Img">
+                                    <img src="~/Content/img/@Model.Img" class="img-responsive">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-7 top-info">
+                        <h1 itemprop="name">@Model.Name</h1>
+                        <p class="aviability">
+                            <b>Tình trạng: </b>
+                            <span class="in-stock"> @Model.Available</span>
+                        </p>
+                        <p><b>Nhà sản xuất:</b> @Model.Producer</p>
+                        <p><b>Mã hàng:</b> @Model.ID </p>
+                        <div class="desc" itemprop="description">
+
+                        </div>
+                        <p class="product-price">
+                            <span class="special-price">Liên hệ</span>
+                            <span class="old-price"><del></del></span>
+                        </p>
+                        <div class="form-group">
+                            <p><b>Số lượng:</b> @Model.Quantity </p>
+                            <p><b>Giá:</b> @Model.Gia VND  </p>
+
+                        </div>
+
+
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                       
+                            <a href="@Url.Action("CartAdd","Cart",new {productid =Model.ID })" onclick="" class="cart">
+                                <button class="first-button product-add-to-cart" type="button"> Thêm vào giỏ hàng</button>
+                            </a>
+                        
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

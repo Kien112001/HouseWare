@@ -1,0 +1,108 @@
+﻿<footer id="footer">
+    <div class="container">
+        <div class="top-footer">
+            <div class="row">
+                <div class="col-md-3 col-xs-12 col-contact">
+                    <h3>Địa chỉ</h3>
+                    <p> <span class="icon"><img src="~/Content/img/ico-house.png" width="15px" /></span> <span class="info">14 Phạm Quý Thích, phường Tấn Quý, quận Tân Phú, TPHCM</span> </p>
+                    <p> <span class="icon"><img src="~/Content/img/ico-phone.png" width="15px" /></span> <span class="info">0906 308 380</span> </p>
+                 
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3>Hỗ trợ khách hàng</h3>
+                    <ul>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3>Chính sách</h3>
+                    <ul>
+
+                        <li><a href="thong-tin/chinh-sach-doi-tra-13.html">Chính sách đổi trả</a></li>
+
+                        <li><a href="thong-tin/chinh-sach-giao-hang-12.html">Chính sách giao hàng</a></li>
+
+                    </ul>
+                </div>
+
+                <script>
+
+	function dangkymail(doc){
+		document.getElementById("khungnen").style.display = "block";
+		document.getElementById("loadding").style.display = "block";
+		jQuery.post('home/nhan-ban-tin/index.html',$(doc).serialize(),function(data){
+			document.getElementById("khungnen").style.display = "none";
+			document.getElementById("loadding").style.display = "none";
+			if(data == 0){
+				swal({
+					title: "Yêu cầu đăng ký mail của bạn đã được gửi. Chúng tôi sẽ có phản hồi sớm nhất đến bạn.",
+					type: "success",
+					showCancelButton: false,
+					confirmButtonColor: '#F19F00',
+					confirmButtonText: 'OK',
+				},
+				function(isConfirm){
+					if (isConfirm){
+						location.reload();
+					}
+				});
+			}else if(data == 1 || data != 0){
+				swal({
+					title: "Đã xảy ra lỗi trong quá trình gửi..",
+					type: "error",
+					showCancelButton: false,
+					confirmButtonColor: '#F19F00',
+					confirmButtonText: 'OK',
+				},
+				function(isConfirm){
+					if (isConfirm){
+						return false;
+					}
+				});
+			}
+		})
+		return false;
+	}
+	@*function KiemTraEmailLH()
+	{
+		var x = document.FromDK;
+		var n = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		var xx=x.txtEmail.value;
+		if(!xx.match(n))
+		{
+				swal({
+					title: "Email không hợp lệ",
+					type: "error",
+					showCancelButton: false,
+					confirmButtonColor: '#F19F00',
+					confirmButtonText: 'OK',
+				},
+				function(isConfirm){
+					if (isConfirm){
+						x.txtEmail.focus();
+						jQuery("#sub").attr("type", "button");
+						return false;
+					}
+				});
+		}else{
+			jQuery("#sub").attr("type", "submit");
+			return true;
+		}
+	}*@
+                </script>
+                <div class="col-md-3 col-xs-12 col-newsletter">
+                    <h3>nhận tin khuyến mãi</h3>
+                    <p>Đăng ký nhận những thông tin ưu đãi mới nhất từ cửa hàng chúng tôi.</p>
+                    <form name="FromDK" method="post" action="#" onsubmit="return dangkymail(this);">
+                        <div class="form-group">
+                            <input type="text" value="" onchange="return KiemTraEmailLH(this);" name="txtEmail" placeholder="Điền địa chỉ email...">
+                            <button class="first-button"><img src="~/Content/img/ico-right-arrow.jpg" width="15px" /></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>

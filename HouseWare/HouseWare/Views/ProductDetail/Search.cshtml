@@ -1,0 +1,56 @@
+﻿@using HouseWare.Models.Entities
+@model List<Product>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/HouseWare_Layouts.cshtml";
+}
+
+<h2>Kết quả tìm kiếm: @ViewBag.Key</h2>
+<div class="special-collection">
+    <div class="container">
+        @*<div class="default-title">
+            <h2>Đồ dùng nhà bếp</h2>
+        </div>*@
+        <div class="row">
+            <div class="owl-special-collection">
+                @foreach (var item in Model)
+                {
+                    <div class="item">
+                        <div class="product-grid product-item">
+                            <div class="image">
+                                <a href="@Url.Action("DetailPro","ProductDetail",new {@Masp =item.ID })">
+                                    <img src="~/Content/img/@item.Img" class="img-responsive" alt="">
+                                </a>
+                                <div class="form">
+                                    <div class="btn-group" data-toggle="tooltip" title="Thêm vào giỏ hàng">
+                                        <a href="@Url.Action("CartAdd","Cart",new {productid = item.ID })">
+                                            <input type="hidden" name="id" value="1505987" />
+                                            <button class="button add-cart" type="button">
+                                                <img src="~/Content/img/ico-cart_mobile.png" /> <span class="hidden-md hidden-lg"> Thêm vào giỏ hàng</span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h3 class="name">
+                                    <a href="san-pham/5-qt-dutch-oven-21.html">@item.Name</a>
+                                </h3>
+                                <p class="vendor">Giá: @item.Gia VND</p>
+                                <p class="price">
+                                    <span class="special">Liên hệ</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
